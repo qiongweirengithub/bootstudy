@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- namespace要指向定义的mapper接口 -->
+<mapper namespace="com.qw.study.shardingdb.dal.sharding.OrderMapper">
+
+    <resultMap id="base_order_map" type="com.qw.study.shardingdb.common.OrderInfo">
+        <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
+        <result column="order_type" jdbcType="VARCHAR" property="orderType" />
+        <result column="passage_name" jdbcType="VARCHAR" property="passageName" />
+    </resultMap>
+
+    <!-- id即mapper接口中的具体方法名 -->
+    <!-- resultType即方法返回值-->
+    <select id="queryByOrderNo" parameterType="java.lang.String" resultMap="base_order_map">
+        SELECT * FROM order_info
+        <where>
+            <if test="orderNo != null">
+                order_no = #{orderNo}
+            </if>
+        </where>
+        <if test="limit != null and current != null">
+            limit #{current}, #{limit}
+        </if>
+    </select>
+
+
+    <insert id="insertSelective" parameterType="com.qw.study.shardingdb.common.OrderInfo">
+        insert into order_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="orderNo != null">
+                order_no,
+            </if>
+            <if test="passageName != null">
+                passage_name,
+            </if>
+            <if test="orderType != null">
+                order_type,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="orderNo != null">
+                #{orderNo, jdbcType=VARCHAR},
+            </if>
+            <if test="passageName != null">
+                #{passageName, jdbcType=VARCHAR},
+            </if>
+            <if test="orderType != null">
+                #{orderType, jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
+
+</mapper>

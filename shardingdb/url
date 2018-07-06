@@ -1,0 +1,3 @@
+http://localhost:8080/insert?orderNo=xep000111&passageName=q&orderType=14
+http://localhost:8080/search   ->  查询所有
+http://localhost:8080/search?orderNo=xep000111   ->  根据分表规则查询
