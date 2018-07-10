@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
@@ -29,6 +30,8 @@ public class ShardingdbApplicationTests {
 	public void contextLoads() {
 
 		List<OrderInfo> orderInfoList = mapper.queryByOrderNo(null, 1, 3);
+
+		JdbcTemplate jdbcTemplate = new JdbcTemplate();
 
 		LOGGER.info("{}",JsonUtils.toJson(orderInfoList));
 

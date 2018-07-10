@@ -42,13 +42,13 @@ public class ShardingRules {
     @Bean(name = "dataSource0")
     @ConfigurationProperties(prefix = "datasource0")
     public DataSource testShardingDataSource0(){
-        return new DruidDataSource();
+        return DataSourceBuilder.create().build();
     }
 
     @Bean(name = "dataSource1")
     @ConfigurationProperties(prefix = "datasource1")
     public DataSource testShardingDataSource1(){
-        return new DruidDataSource();
+        return DataSourceBuilder.create().build();
     }
 
 
