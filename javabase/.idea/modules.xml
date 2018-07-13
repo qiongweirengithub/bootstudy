@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/javabase.iml" filepath="$PROJECT_DIR$/javabase.iml" />
+      <module fileurl="file://$PROJECT_DIR$/transferqueue/transferqueue.iml" filepath="$PROJECT_DIR$/transferqueue/transferqueue.iml" />
     </modules>
   </component>
 </project>
